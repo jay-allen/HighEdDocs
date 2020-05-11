@@ -1,0 +1,26 @@
+---
+layout: layouts/single.njk
+---
+
+<div>
+  <h1>{{title}}</h1>
+</div>
+
+<div>{{ excerpt }}</div>
+
+<div>
+  <h2>Impacted Sysytems</h2>
+
+  {% if  system_title%}
+  <ul>
+    {% for system in system_title %}
+      <li>{{system}}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  
+</div>
+
+<div>
+  {{ content | safe }}
+</div>

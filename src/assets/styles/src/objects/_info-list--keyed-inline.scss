@@ -1,0 +1,17 @@
+.o-info-list-keyed {
+    margin-bottom: 2rem;
+}
+.o-info-list-keyed__title {
+    display: inline-block;
+    font-weight: bold;
+}
+.o-info-list-keyed__title:after {
+    content: ":";
+}
+.o-info-list-keyed__details {
+    display: inline;
+}
+.o-info-list-keyed__details:after {
+    display: block;
+    content: "";
+}

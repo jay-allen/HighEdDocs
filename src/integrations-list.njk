@@ -1,0 +1,15 @@
+---
+title: Integtrations List
+layout: layouts/single.njk
+permalink: /integration/index.html
+---
+
+<h1>Integrations</h1>
+
+<ul>
+  {% for item in collections.integration %}
+      <li>
+        <a href="/integration/{{ item.data.title | slug }}">{{ item.data.title }}</a>
+      </li>
+  {% endfor %}
+</ul>

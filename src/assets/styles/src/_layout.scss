@@ -1,0 +1,36 @@
+
+.l-docs-page {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.l-sidebar {
+    flex-basis: 20rem;
+    flex-grow: 1;
+    border-right: 1px solid #e6e6e6;
+}
+
+.l-docs-page__main {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: 50%;    
+}
+.l-docs-page__main > * {
+    max-width: 60rem;
+    line-height: 1.5;
+}
+.l-docs-page__wrapper {
+    padding: 0 2rem;
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+.l-docs-page__main p {
+    max-width: 60rem;
+    margin-top: 1rem;
+}

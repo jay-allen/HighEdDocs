@@ -1,0 +1,15 @@
+---
+title: Overview
+layout: layouts/single.njk
+permalink: /system/index.html
+---
+
+<h1>Systems</h1>
+
+<ul class="c-system-list">
+  {% for item in collections.systemList %}
+      <li class="c-system-list__item">
+        <a class="c-system-list__link" href="/{{ item | slug }}">{{ item }}</a>
+      </li>
+  {% endfor %}
+</ul>

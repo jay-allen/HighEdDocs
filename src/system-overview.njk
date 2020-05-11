@@ -1,0 +1,116 @@
+---
+title: Overview
+layout: layouts/single.njk
+pagination:
+  data: collections.system
+  size: 1
+  alias: system
+permalink: /{{ system.data.title | slug }}/overview/index.html
+---
+
+<div class="masthead">
+
+  <h1 class="masthead__heading">{{ system.data.title }}</h1>
+
+  {% if system.data.system_url %}
+  <div class="masthead__sub-heading">
+    <a class="masthead__link" href="{{ system.data.system_url | customlink }}">{{ system.data.system_url }}</a>
+  </div>
+  {% endif %}
+
+</div>
+
+  <div class="system-info">
+
+    {% if system.data.externalSystem %}
+    <div>External System: {{system.data.externalSystem }}</div>
+    {% endif %}
+
+    <h2>Contacts</h2>
+
+    {% if system.data.contact_primary %}
+    <div class="c-primary-contact">
+      <h3 class="c-primary-contact__heading">Primary</h3>
+      <a class="c-primary-contact__link" href="/user/{{ system.data.contact_primary | slug }}">{{ system.data.contact_primary }}</a>
+    </div>
+    {% endif %}
+    
+    {% if system.data.contact_other %}
+    <div class="c-secondary-contact">
+      <h3 class="c-secondary-contact__heading">Secondary</h3>
+      <ul class="c-secondary-contact__list">
+        {% for contact in system.data.contact_other  %}
+          <li>
+            <a href="/user/{{ contact | slug }}">{{ contact }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% for vendor in system.data.vendor_contact_list %}
+      <div class="c-vendor-info">
+        <h2 class="c-vendor-info__heading">Vendor Info</h2>
+        <dl class="c-vendor-info__list">
+
+          {% if vendor.name %}
+          <dt class="c-vendor-info__title">Name</dt>
+          <dd class="c-vendor-info__details">{{ vendor.name }}</dd>
+          {% endif %}
+
+          {% if vendor.url %}
+          <dt class="c-vendor-info__title">URL</dt>
+          <dd class="c-vendor-info__details">
+            <a class="c-vendor-info__link" href="{{ vendor.url | customlink }}">{{ vendor.url }}</a>
+          </dd>
+          {% endif %}
+
+          {% if vendor.email %}
+          <dt class="c-vendor-info__title">Email</dt>
+          <dd class="c-vendor-info__details">
+            <a class="c-vendor-info__link" href="mailto:{{ vendor.email }}">{{ vendor.email }}</a>
+          </dd>
+          {% endif %}
+          
+        </dl>
+        
+        {% if vendor.body %}
+        <div class="c-vendor-additional-info">
+          <h3 class="c-vendor-additional-info__heading">Additional Info</h3>
+          <div class="c-vendor-additional-info__body">{{ vendor.body | markdown | safe  }}</div>
+        </div>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+    
+    {% if system.data.url_environments %}
+    <h2>Other Environments</h2>
+    <dl class="c-env-list o-info-list-keyed">
+      {% for url in system.data.url_environments %}
+      <dt class="c-env-list__title o-info-list-keyed__title">{{ url.environment }}</dt>
+      <dd class="c-env-list__details o-info-list-keyed__details"><a href=" {{ url.value | customlink }} ">{{ url.value }}</a></dd>
+      {% endfor %}
+    </dl>
+    {% endif %}
+
+    {% if system.data.servers %}
+    <h2>Servers</h2>
+    {% for server in system.data.servers %}
+    <dl>
+      <dt>{{ server.environment }}</dt>
+      {% for item in server.server_name %}
+        <dd>{{ item.name }} ({{ item.type }})</dd>
+      {% endfor %}
+    </dl>
+    {% endfor %}
+    {% endif %}
+
+  </div>
+
+  {% if system.templateContent %}
+  <div class="content">
+    {{ system.templateContent | safe }}
+  </div>
+  {% endif %}
+    

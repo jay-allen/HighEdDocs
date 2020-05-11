@@ -1,0 +1,23 @@
+{
+  "name": "checkout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": ".\\scripts\\Delete-Dist.ps1; npm run styles; npx @11ty/eleventy;",
+    "start": ".\\scripts\\Delete-Dist.ps1; eleventy --serve;",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "styles": "sass --style=compressed .\\src\\assets\\styles\\src\\theme.scss .\\src\\assets\\styles\\styles.css",
+    "styles:watch": "sass --watch --style=compressed .\\src\\assets\\styles\\src\\theme.scss .\\src\\assets\\styles\\styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0",
+    "sass": "^1.26.5"
+  },
+  "dependencies": {
+    "netlify-cms": "^2.9.7"
+  }
+}

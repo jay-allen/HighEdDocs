@@ -1,0 +1,15 @@
+---
+title: User List
+layout: layouts/user.njk
+permalink: /user/index.html
+---
+
+<h2>Users</h2>
+
+<ul>
+  {% for user in collections.user %}
+      <li>
+        <a href="{{ user.data.title | slug }}">{{ user.data.title }}</a>
+      </li>
+  {% endfor %}
+</ul>

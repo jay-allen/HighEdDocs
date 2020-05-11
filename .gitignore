@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+# 11ty Build Location
+_site/
+dist/
+
+#  Dist CSS
+src/assets/styles/styles.css
+src/assets/styles/styles.css.map

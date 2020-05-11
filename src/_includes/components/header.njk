@@ -1,0 +1,28 @@
+<header class="c-sidebar l-sidebar">
+  <div>
+    <a class="navbar-brand" href="/">
+      {% include "./logo.njk" %}
+    </a>
+  </div>
+  <nav>
+      <div class="c-sidebar-section">
+        <h2 class="c-sidebar__heading">Systems</h2>
+        <ul class="c-sidebar__list">
+          {%- for item in collections.system -%}
+            {% if item.data.tier_one %}
+            <li>
+              <a class="c-sidebar__link" href="/{{ item.data.title | slug }}">{{ item.data.title }}</a>
+            </li>
+          {% endif %}
+          {%- endfor -%}
+          <li>
+            <a class="c-sidebar__link" href="/system">View All Systems</a>
+          </li>
+        </ul>
+      </div>
+      <div class="c-sidebar-section">
+        <h2 class="c-sidebar__heading">Integrations</h2>
+        <div><a class="c-sidebar__link" href="/integration">View All Integrations</a></div>
+      </div>
+  </nav>
+</header>

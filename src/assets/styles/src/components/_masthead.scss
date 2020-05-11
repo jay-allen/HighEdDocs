@@ -1,0 +1,34 @@
+.masthead {
+    background-color: #003865;
+    color: #ffffff;
+    padding: 4rem 2rem;
+}
+.masthead__heading {
+    margin: 0;
+}
+
+.masthead__sub-heading {
+
+}
+
+.masthead__link,
+.masthead__link:visited {
+    color: #ffffff;
+}
+
+@media print {
+
+    .masthead {
+        padding: 1rem 0;
+        background-color: #ffffff;
+    }
+
+    .masthead__heading {
+        color: #000000;
+    }
+
+    .masthead__link {
+        color: #000000;
+    }
+    
+}

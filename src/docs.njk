@@ -1,0 +1,16 @@
+---
+title: Docs List
+layout: layouts/single.njk
+pagination:
+  data: collections.docs
+  size: 1
+  alias: docs
+permalink: /{{ docs.data.system_title | slug }}/{{ docs.data.title | slug }}/index.html
+---
+
+<h1>{{ docs.data.title }}</h1>
+
+<div class="content">
+    {{ docs.templateContent | safe }}
+</div>
+    

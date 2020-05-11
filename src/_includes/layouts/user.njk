@@ -1,0 +1,31 @@
+---
+layout: layouts/single.njk
+---
+
+
+<h1>{{title}}</h1>
+
+<dl class="c-user-list o-info-list-keyed">
+
+  {% if email %}
+  <dt class="c-user-list__title o-info-list-keyed__title">Email</dt>
+  <dd class="c-user-list__details o-info-list-keyed__details">
+    <a class="c-user-list__link" href="mailto:{{ email }}">{{ email }}</a>
+  </dd>
+  {% endif %}
+  
+  {% if phone_cell %}
+  <dt class="c-user-list__title o-info-list-keyed__title">Work Phone</dt>
+  <dd class="c-user-list__details o-info-list-keyed__details">{{ phone_work }}</dd>
+  {% endif %}
+  
+  {% if phone_cell %}
+  <dt class="c-user-list__title o-info-list-keyed__title">Cell Phone</dt>
+  <dd class="c-user-list__details o-info-list-keyed__details">{{ phone_cell }}</dd>
+  {% endif %}
+
+</dl>
+
+<div>
+  {{ content | safe }}
+</div>

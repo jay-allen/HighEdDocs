@@ -1,0 +1,26 @@
+
+.c-latest-post__list {
+    list-style: none;
+    margin: 0;
+}
+.c-latest-post__heading {
+    font-size: 2rem;
+    color: #000;
+}
+.c-latest-post__excerpt {
+    color: #000;
+}
+.c-latest-post__list-item {
+    background-color: #eee;
+}
+.c-latest-post__list-item + .c-latest-post__list-item {
+    margin-top: .75rem;
+}
+.c-latest-post__link {
+    color: #000;
+    padding: 1rem 2rem;
+    display: block;
+}
+.c-latest-post__link:after {
+    content: none;
+}

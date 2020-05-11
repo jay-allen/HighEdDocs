@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{ title }}</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+  
+    <link rel="stylesheet" href="/assets/styles/font-awesome.css">
+    <link rel="stylesheet" href="/assets/styles/prism.css">
+      
+    <link rel="stylesheet" href="/assets/styles/styles.css" />
+  </head>
+
+  <body>
+    <div class="l-docs-page">
+      
+      {% include "components/header.njk" %}
+
+      <div class="l-docs-page__main">
+        <div class="l-docs-page__wrapper">
+          {{ content | safe }}
+          {% include "components/footer.njk" %}
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/prism.js"></script>
+  </body>
+</html>

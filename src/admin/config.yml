@@ -1,0 +1,260 @@
+backend:
+  name: github
+  repo: REPONAME # Replace with your repo name
+  branch: master # Branch to update (optional; defaults to master)
+  base_url: https://NAME_OF_YOUR_OAUTH_SITE # Replace with location of OAuth App
+publish_mode: editorial_workflow
+media_folder: "src/assets/img/uploads" # Media files will be stored in the repo under images/uploads
+collections:
+  - name: "docs" # Used in routes, e.g., /admin/collections/blog
+    label: "Posts" # Used in the UI
+    folder: "src/docs" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "layouts/single.njk",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Creation Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          dateFormat: "MM-DD-YYYY",
+          timeFormat: false,
+        }
+      - {
+          label: "Documentation Tag",
+          name: "tag",
+          widget: "select",
+          options:
+            [
+              "Bugfix",
+              "General",
+              "How-To",
+              "Feature Flow",
+              "Integrations",
+              "Maintenance",
+              "Release Notes",
+              "Setup",
+              "Standards",
+              "Troubleshooting",
+            ],
+          default: "General",
+          required: true,
+        }
+      - {
+          label: "Related System",
+          name: "system_title",
+          widget: "relation",
+          collection: "system",
+          searchFields: ["system_url", "title"],
+          valueField: "title",
+          displayFields: ["title", "system_url"],
+        }
+      - {
+          label: "Excerpt",
+          name: "excerpt",
+          widget: "string",
+          hint: "Provide a short description (used as a post preview).",
+          required: true,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "integration" # Used in routes, e.g., /admin/collections/blog
+    label: "Integrations" # Used in the UI
+    folder: "src/integration" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "layouts/integration.njk",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Creation Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          dateFormat: "MM-DD-YYYY",
+          timeFormat: false,
+        }
+      - {
+          label: "Related System",
+          name: "system_title",
+          widget: "relation",
+          collection: "system",
+          searchFields: ["system_url", "title"],
+          valueField: "title",
+          displayFields: ["title", "system_url"],
+          multiple: true,
+        }
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "system" # Used in routes, e.g., /admin/collections/blog
+    label: "System" # Used in the UI
+    folder: "src/system" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "System URL",
+          name: "system_url",
+          widget: "string",
+          hint: "What is the main URL associated with this system?",
+          required: false,
+        }
+      - {
+          label: "Tier 1 System",
+          name: "tier_one",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "External System",
+          name: "externalSystem",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - label: "Other Environments"
+        name: "url_environments"
+        widget: "list"
+        fields:
+          - {
+              label: Environment,
+              name: environment,
+              widget: select,
+              options: ["Stage", "Test", "Development"],
+            }
+          - {
+              label: URL,
+              name: value,
+              widget: string,
+              hint: "Enter non-production URL",
+            }
+      - label: "Servers"
+        name: "servers"
+        widget: "list"
+        fields:
+          - {
+              label: Environment,
+              name: environment,
+              widget: select,
+              options: ["Production","Stage", "Test", "Development"],
+            }
+          - label: "Servers"
+            name: "server_name"
+            widget: "list"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Type, name: type, widget: select,options: ["Web","Database"] }
+      - {
+          label: "Primary Contact",
+          name: "contact_primary",
+          widget: "relation",
+          collection: "user",
+          required: true,
+          hint: "Who is the primary subject matter expert?",
+          searchFields: ["title", "email"],
+          valueField: "title",
+          displayFields: ["title"],
+        }
+      - {
+          label: "Secondary Contacts",
+          name: "contact_other",
+          widget: "relation",
+          collection: "user",
+          required: false,
+          searchFields: ["title", "email"],
+          valueField: "title",
+          displayFields: ["title"],
+          multiple: true,
+        }
+      - label: "Vendor Contacts"
+        name: "vendor_contact_list"
+        widget: "list"
+        fields:
+          - { label: Name, name: name, widget: string }
+          - {
+              label: Type,
+              name: type,
+              widget: select,
+              options: ["Support", "General Contact"],
+            }
+          - {
+              label: Email,
+              name: email,
+              widget: string,
+              required: false,
+              pattern:
+                [
+                  '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+                  "Must be a valid email",
+                ],
+            }
+          - {
+              label: Phone,
+              name: phone,
+              widget: string,
+              required: false,
+              hint: "Must be in format ###-###-####",
+              pattern:
+                ['^[2-9]\d{2}-\d{3}-\d{4}$', "Must be in format ###-###-####"],
+            }
+          - { label: URL, name: url, widget: string, required: false }
+          - {
+              label: Additional Vendor Info,
+              name: body,
+              widget: markdown,
+              required: false,
+            }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+  - name: "user" # Used in routes, e.g., /admin/collections/blog
+    label: "User" # Used in the UI
+    folder: "src/user" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "layouts/user.njk",
+        }
+      - { label: "Name", name: "title", widget: "string" }
+      - {
+          label: "Email",
+          name: "email",
+          widget: "string",
+          pattern:
+            [
+              '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+              "Must be a valid email",
+            ],
+        }
+      - {
+          label: "Work Phone",
+          name: "phone_work",
+          widget: "string",
+          hint: "Must be in format ###-###-####",
+          pattern:
+            ['^[2-9]\d{2}-\d{3}-\d{4}$', "Must be in format ###-###-####"],
+        }
+      - {
+          label: "Cell Phone",
+          name: "phone_cell",
+          widget: "string",
+          hint: "Must be in format ###-###-####",
+          required: false,
+          pattern:
+            ['^[2-9]\d{2}-\d{3}-\d{4}$', "Must be in format ###-###-####"],
+        }

@@ -1,0 +1,41 @@
+
+.c-home-topic-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.c-home-topic__topic {
+    padding: 0 10px;
+    margin-bottom: 1rem;
+    flex-basis: 25rem;
+}
+.c-home-topic__topic:first-child {
+    padding-left: 0;
+}
+.c-home-topic__topic:last-child {
+    padding-right: 0;
+}
+
+.c-home-topic__heading {
+    font-size: 2rem;
+    font-weight: bold;    
+}
+
+.c-home-topic__body {
+    margin-top: 1rem;
+}
+.c-home-topic__link {
+    margin-top: 1rem;
+    text-decoration: none;
+    content: "";
+    position: relative;
+}
+.c-home-topic__link:after {
+    background: linear-gradient(0deg, #012950 0, #012950 100%);
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+}

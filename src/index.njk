@@ -1,0 +1,46 @@
+---
+title: Web Team Documentation
+layout: layouts/single.njk
+---
+
+<h1>Web Team Documentation</h1>
+
+<section class="c-latest-post">
+  <h2>Latest Posts</h2>
+
+  <ul class="c-latest-post__list">
+    {% for doc in collections.homePostFeed %} {% set docUrl %}/{{
+      doc.data.system_title | slug
+    }}/{{
+      doc.data.title | slug
+    }}/{% endset %}
+    <li class="c-latest-post__list-item">
+      <a class="c-latest-post__link" href="{{ docUrl }}">
+        <h3 class="c-latest-post__heading">{{ doc.data.title }}</h3>
+        {% if doc.data.excerpt %}
+        <div class="c-latest-post__excerpt">{{ doc.data.excerpt }}</div>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="c-home-topic-wrapper">
+  <div class="c-home-topic">
+    <h2 class="c-home-topic__heading">Documentation</h2>
+    <p class="c-home-topic__body">Find Documentation on different systems</p>
+    <a class="c-home-topic__link" href="/docs">Browse Documentation</a>
+  </div>
+</section>
+
+<section class="c-home-topic-wrapper">
+  <div class="c-home-topic">
+    <h2 class="c-home-topic__heading">Contributing</h2>
+    <p class="c-home-topic__body">
+      Documentation is stored and edited through our source control
+      reporistories. See the
+      <a class="c-home-topic__link"  href="/contributing">contributing section</a> for details.
+    </p>
+  </div>
+</section>

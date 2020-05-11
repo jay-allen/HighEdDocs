@@ -1,0 +1,17 @@
+---
+title: Docs Index
+layout: layouts/single.njk
+permalink: /docs/index.html
+---
+
+<h1>Documentation - All</h1>
+
+<ul>
+  {% for doc in collections.docs %}
+      {% set docUrl %}/{{doc.data.system_title | slug}}/{{ doc.data.title | slug }}/{% endset %}
+      <li>
+        <a href="{{ docUrl }}">{{ doc.data.title }}</a>
+      </li>
+  {% endfor %}
+</ul>
+

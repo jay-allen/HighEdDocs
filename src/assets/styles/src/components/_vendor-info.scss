@@ -1,0 +1,26 @@
+.c-vendor-info__list {
+    margin-bottom: 2rem;
+}
+.c-vendor-info__heading {
+    font-weight: bold;
+}
+.c-vendor-info__title {
+    display: inline-block;
+    font-weight: bold;
+}
+.c-vendor-info__title:after {
+    content: ":";
+}
+.c-vendor-info__details {
+    display: inline;
+}
+.c-vendor-info__details:after {
+    display: block;
+    content: "";
+}
+.c-vendor-additional-info {
+    margin-bottom: 2rem;
+}
+.c-vendor-additional-info__heading {
+    font-weight: bold;
+}

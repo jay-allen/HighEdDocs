@@ -1,0 +1,46 @@
+
+.c-sidebar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.c-sidebar-section {
+    margin-bottom: 2rem;
+}
+.c-sidebar__heading {
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: .75rem;
+    text-transform: uppercase;
+    margin-left: 12px;
+}
+.c-sidebar__link {
+    display: block;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #191a1a;
+    padding: 12px;
+    margin-bottom: 6px;
+}
+.c-sidebar__link:visited {
+    color: #191a1a;
+}
+.c-sidebar__link:hover,
+.c-sidebar__link:focus {
+    background-color: #f2f2f2;
+}
+.c-sidebar__list {
+    list-style: none;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 1rem;
+}
+.c-sidebar__list li:last-child {
+    font-weight: bold;
+}
+
+@media print {
+    .c-sidebar { 
+        display: none;
+     }
+}
+  

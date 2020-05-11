@@ -1,0 +1,24 @@
+---
+title: System
+layout: layouts/single.njk
+pagination:
+  data: collections.system
+  size: 1
+  alias: system
+permalink: /{{ system.data.title | slug }}/index.html
+---
+
+<h1>{{ system.data.title }} Tags</h1>
+
+<ul class="c-sytem-tag__list">
+  <li class="c-sytem-tag__item">
+    <a class="c-sytem-tag__link" href="overview">Overview</a>
+  </li>
+  {% for item in collections.systemAndTags %}
+    {% if (item.system == system.data.title)  %}
+      <li class="c-sytem-tag__item">
+        <a class="c-sytem-tag__link" href="{{ item.tag | slug }}">{{ item.tag }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

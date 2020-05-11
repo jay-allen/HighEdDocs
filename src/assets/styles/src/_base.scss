@@ -1,0 +1,62 @@
+
+  h1 {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #01366a;
+  }
+  a:visited {
+    color: #93328E;
+  }
+
+  p a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+  }
+  p a:after {
+    background: linear-gradient(0deg, #012950 0, #012950 100%);
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+  }
+  ul ul {
+    margin-left: 1.5rem;
+  }
+  ul ul ul {
+    margin-left: 2.5rem;
+  }
+  
+  li {
+    margin-bottom: 0.25rem;
+  }
+  em {
+    font-style: italic;
+  }
+  b {
+    font-style: bold;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+  }

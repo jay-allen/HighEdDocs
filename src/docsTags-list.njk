@@ -1,0 +1,24 @@
+---
+title: System Tags List
+layout: layouts/single.njk
+pagination:
+  data: collections.systemAndTags
+  size: 1
+  alias: systemAndTags
+permalink: /{{ systemAndTags.system | slug }}/{{ systemAndTags.tag | slug }}/index.html
+---
+
+<h1>{{ systemAndTags.system }} - {{ systemAndTags.tag }} List</h1>
+
+<ul>
+  {% for doc in collections.docs %}
+    {% if (doc.data.system_title == systemAndTags.system) and (doc.data.tag == systemAndTags.tag) %}
+      {% set docUrl %}/{{doc.data.system_title | slug}}/{{ doc.data.title | slug }}/{% endset %}
+      <li>
+        <a href="{{ docUrl }}">{{ doc.data.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+    
